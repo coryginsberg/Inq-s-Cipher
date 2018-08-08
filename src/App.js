@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './Inq.png';
 import './App.scss';
-import SpecialAlert from './SpecialAlert';
 import CipherForm from './Cipher';
 
 export default class App extends Component {
@@ -37,15 +36,11 @@ export default class App extends Component {
             <button className="start-btn btn-lg btn-orange" onClick={this.startAlpha}>Press the button to begin</button>
           ) : (null)}
           {text}
-          <SpecialAlert />
         </div>
-        <h6 className="hidden">Yahaha! You found me!</h6>
         <footer className="App-footer">
           This project is based on things that have been shown on Vsause. 
           Specifically, Inq's Cipher Wheel as seen 
           in <a href="https://youtu.be/TvsiLV7RLx4">this Michael's Toy's episode</a>.
-          <br/>
-          Also there are a bunch of (subtle) Easter Eggs on this site. Try to find them all ;)
           <br/>
           <br/>
           Created by Cory Ginsberg, 2018.
