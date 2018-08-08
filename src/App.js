@@ -34,7 +34,7 @@ export default class App extends Component {
         </header>
         <div className="App-content">
           {!this.state.isToggleOn ? (
-            <button className="start-btn btn-lg btn-orange" onClick={this.startAlpha}>Press the button to begin</button>
+            <button className="start-btn mdc-button mdc-button--raised" onClick={this.startAlpha}>Press the button to begin</button>
           ) : (null)}
           {text}
           <SpecialAlert />

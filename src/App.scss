@@ -1,4 +1,6 @@
-@import "../node_modules/@material/button/mdc-button";
+@import "@material/button/mdc-button";
+@import "@material/textfield/mdc-text-field";
+
 @font-face {
   font-family: AlsinaUltrajada;
   src: url(./Alsina-Ultrajada.TTF);
@@ -7,6 +9,7 @@
 $top-nav-height: 230px;
 $footer-height: 115px;
 $orange: #F58220;
+$gray: #3A3A3C;
 
 * {
   margin: 0;
@@ -15,6 +18,7 @@ $orange: #F58220;
 html {
   height: 100%;
   box-sizing: border-box;
+  // background-color: #fafafa;
 }
 
 *,
@@ -39,6 +43,8 @@ html {
   padding-top:0px;
   padding-bottom: 50px;
   color: white;
+
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .App-title {
@@ -46,6 +52,8 @@ html {
   font-family: AlsinaUltrajada, sans-serif;
   margin-top: -5px;
   color: #3A3A3C;
+
+  
 }
 
 .App-intro {
@@ -65,39 +73,36 @@ html {
 }
 
 .start-btn {
-  margin-top: 2rem;
-  cursor: pointer;
-  height: 50px;
-  line-height: 35px;
-  padding: 1rem 1.5rem 4rem 1.5rem;
-  font-size: 25px;
-  font-family: AlsinaUltrajada, sans-serif;
-  vertical-align: middle;
-  white-space: nowrap;
-  outline: none;
-  border: none;
-  user-select: none;
-  border-radius: 4px;
-  transition: all .3s ease-out;
-  box-shadow: 0 4px 10px 0 rgba(0,0,0,0.225);
+  margin-top: 50px;
+  @include mdc-button-ink-color(white);
+  @include mdc-button-container-fill-color($orange);
+  @include mdc-button-corner-radius(5px);
+  @include mdc-button-horizontal-padding(50px);
+  text-transform: capitalize;
+  font-family: AlsinaUltrajada;
+  font-size: 20pt;
+  height: 75px;
+}
 
-  &:hover { 
-    text-decoration: none; 
-    box-shadow: 0 8px 20px 0px rgba(0,0,0,0.225); 
-  }
+.small-btn {
+  @include mdc-button-ink-color($gray);
+  @include mdc-button-container-fill-color($orange);
+  @include mdc-button-corner-radius(5px);
 
-  &.btn-orange { 
-    color: #FFF; 
-    background-color: $orange; 
-    &:hover { 
-      background-color: darken($orange, 8%); 
-    } 
-  }
+  text-transform: capitalize;
+  font-family: AlsinaUltrajada;
+  font-size: 15pt;
+  // padding-bottom: 5px;
+}
 
-  &.btn-lg {
-    height: 48px;
-    line-height: 48px;
-  }
+.input-field {
+  margin-top: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.txtarea-label {
+  font-size: 50pt;
 }
 
 .hidden {
@@ -108,7 +113,7 @@ html {
 .App-footer {
   background-color: $orange;
   height: $footer-height;
-  color: white;
+  color: $gray;
 
   position: absolute;
   right: 0;
@@ -116,5 +121,6 @@ html {
   left: 0;
   padding: 1rem;
   
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
