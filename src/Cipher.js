@@ -15,11 +15,15 @@ export default class CipherForm extends Component {
   }
 
   onSubmit = (event) => {
-    event.preventDefault();
+    this.setState({[event.target.name]: event.target.value}); // Universal setting of this.state.*
 
-    let letters = [...Array(26).keys()].map(i => String.fromCharCode(i + 97));
+    event.preventDefault(); // Self Explanitory IMO
 
-    this.setState({[event.target.name]: event.target.value});
+    let textToEncrypt = this.state.textbox;
+    console.log(textToEncrypt);
+
+    let alphabet = [...Array(26).keys()].map(i => String.fromCharCode(i + 97));
+    let newAlphabet = alphabet;
 
     let holdLetters = [];
 
@@ -27,10 +31,14 @@ export default class CipherForm extends Component {
     // console.log(this.state.listNumber);
 
     for (let i = 0; i < this.state.listNumber; i++) {
-      console.log(letters[i]);
-      // holdLetters.push(letters[i]);
-      // console.log(this.holdLetters);
+      holdLetters.push(alphabet[i]);
     }
+    for (let i = 0; i < this.state.listNumber; i++) {
+      newAlphabet.shift(alphabet[i]);
+    }
+    newAlphabet.push(holdLetters);
+
+    
   }
 
   handleChange = (event) => {
@@ -45,7 +53,6 @@ export default class CipherForm extends Component {
 
     let letters = [...Array(26).keys()].map(i => String.fromCharCode(i + 97)); // Trust me, this makes the alphabet into an Array.
 
-    const { textbox } = this.state;
 
     const listLetters = letters.map((letter) =>
       <option value={letter}>{letter}</option>
