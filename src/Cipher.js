@@ -9,7 +9,10 @@ export default class CipherForm extends Component {
     super(props);
     this.state = {
       listLetter: 'A',
-      listNumber: 0,
+      listFirstNumber: 1,
+      listSecondNumber: 27,
+      listThirdNumber: 53,
+      listFourthNumber: 79,
       textbox: '',
       cipherValue: '',
       cipherComputed: false,
@@ -22,19 +25,36 @@ export default class CipherForm extends Component {
     event.preventDefault(); // Self Explanitory IMO
 
     const textToEncrypt = this.state.textbox.toUpperCase().split("");
-    const cipherValue = parseInt(this.state.listNumber, 10);
-    console.log(cipherValue);
+    let cipherValue = parseInt(this.state.listFirstNumber, 10); // Default value
 
     let newText = textToEncrypt.map(txtChar => {
+        // Checks the position and changes the cipherValue based on if it is in position [1, 2, 3, 4, 1, 2, 3, 4,...]
+        //TODO: Make this random.
+        switch(textToEncrypt.indexOf(txtChar) % 4) {
+          case 0:
+            cipherValue = parseInt(this.state.listFirstNumber, 10);
+            break;
+          case 1:
+            cipherValue = parseInt(this.state.listSecondNumber, 10);
+            break;
+          case 2:
+            cipherValue = parseInt(this.state.listThirdNumber, 10);
+            break;
+          case 3:
+            cipherValue = parseInt(this.state.listFourthNumber, 10);
+            break;
+          default:
+            cipherValue = parseInt(this.state.listFirstNumber, 10);
+            break;
+        }
+
       if (ALPHABET.includes(txtChar)) {
         return parseInt(ALPHABET.indexOf(txtChar) + 2, 10) + cipherValue + " "
       } else {
         return txtChar + " ";
       }
     });
-
-    console.log(newText);
-
+    
     this.setState({
       cipherValue: newText,
       cipherComputed: true,
@@ -54,27 +74,6 @@ export default class CipherForm extends Component {
   }
 
   render() {
-
-    const numbersFirst = this.calculateOffset(1, 26);
-    const listFirstNumbers = numbersFirst.map((number) =>
-      <option value={number}>{number}</option>
-    );
-
-    const numbersSecond = this.calculateOffset(27, 52);
-    const listSecondNumbers = numbersSecond.map((number) =>
-      <option value={number}>{number}</option>
-    );
-
-    const numbersThird = this.calculateOffset(53, 78);
-    const listThirdNumbers = numbersThird.map((number) =>
-      <option value={number}>{number}</option>
-    );
-
-    const numbersFourth = this.calculateOffset(79, 99);
-    const listFourthNumbers = numbersFourth.map((number) =>
-      <option value={number}>{number}</option>
-    );
-
     return (
       <div>
         <form>
@@ -85,21 +84,12 @@ export default class CipherForm extends Component {
           </div>
           <br/>
           <div className="numSelect-wrapper">
-            <label htmlFor="Number">Select an offset</label>
-            <div className="numSelect-dropdowns">
-              <select id="Number" name="listNumber" onChange={this.handleChange}>
-                {listFirstNumbers}
-              </select>
-              <select id="Number" name="listNumber" onChange={this.handleChange}>
-                {listSecondNumbers}
-              </select>
-              <select id="Number" name="listNumber" onChange={this.handleChange}>
-                {listThirdNumbers}
-              </select>
-              <select id="Number" name="listNumber" onChange={this.handleChange}>
-                {listFourthNumbers}
-              </select>
-            </div>
+            <label htmlFor="Number">Enter offsets from 0 - 99</label>
+            <br/>
+            <input type="number" min="0" max="99" maxLength="2" id="firstNumber" name="listFirstNumber" onChange={this.handleChange}/>
+            <input type="number" min="0" max="99" maxLength="2" id="secondNumber" name="listSecondNumber" onChange={this.handleChange}/>
+            <input type="number" min="0" max="99" maxLength="2" id="thirdNumber" name="listThirdNumber" onChange={this.handleChange}/>
+            <input type="number" min="0" max="99" maxLength="2" id="fourthNumber" name="listFourthNumber" onChange={this.handleChange}/>
           </div>
           <br/>
           <button className="small-btn mdc-button mdc-button--raised" onClick={this.onSubmit}>Encrypt</button>

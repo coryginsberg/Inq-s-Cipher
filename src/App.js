@@ -39,7 +39,7 @@ export default class App extends Component {
           {text}
           <SpecialAlert />
         </div>
-        <h6 className="hidden">Yahaha! You found me!</h6>
+        
         <footer className="App-footer">
           This project is based on things that have been shown on Vsause. 
           Specifically, Inq's Cipher Wheel as seen 
@@ -47,7 +47,7 @@ export default class App extends Component {
           <br/>
           Also there are a bunch of (subtle) Easter Eggs on this site. Try to find them all ;)
           <br/>
-          <br/>
+          <p className="hidden">Yahaha! You found me!</p>
           Created by Cory Ginsberg, 2018.
         </footer>
       </div>
