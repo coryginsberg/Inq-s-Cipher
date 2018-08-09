@@ -45,6 +45,8 @@ export default class App extends Component {
           Specifically, Inq's Cipher Wheel as seen 
           in <a href="https://youtu.be/TvsiLV7RLx4">this Michael's Toy's episode</a>.
           <br/>
+          I DO NOT OWN INQ! INQ WAS CREATED BY THE GUYS AT VSAUSE FOR THE CURIOSITY BOX.
+          <br/>
           Also there are a bunch of (subtle) Easter Eggs on this site. Try to find them all ;)
           <br/>
           <p className="hidden">Yahaha! You found me!</p>
