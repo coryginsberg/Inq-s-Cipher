@@ -3,6 +3,7 @@ import logo from './Inq.png';
 import './App.scss';
 import SpecialAlert from './SpecialAlert';
 import CipherForm from './Cipher';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export default class App extends Component {
   constructor(props) {
@@ -10,36 +11,29 @@ export default class App extends Component {
     this.state = {
       isToggleOn: false,
     };
-    this.startAlpha = this.startAlpha.bind(this);
   }
 
-  startAlpha() {
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn,
-    }));
-  }
+  StartPage = () => (
+    <Link to="/cipher" className="start-btn mdc-button mdc-button--raised">Press the button to begin</Link>
+  )
 
   render() {
-    let text;
-
-    if (this.state.isToggleOn) {
-      text = <div><CipherForm /></div>;
-    }
-
     return (
-      <div className="App">
+      <body className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Inq's Cipher Wheel (Kinda)</h1>
         </header>
-        <div className="App-content">
-          {!this.state.isToggleOn ? (
-            <button className="start-btn mdc-button mdc-button--raised" onClick={this.startAlpha}>Press the button to begin</button>
-          ) : (null)}
-          {text}
+        <main>
+          <Router>
+            <div className="App-content">
+              <Route path="/" exact component={this.StartPage} />
+              <Route path="/cipher" component={CipherForm} />
+            </div>
+          </Router>
           <SpecialAlert />
-        </div>
-        
+        </main>
+      {!this.state.isToggleOn ? (  
         <footer className="App-footer">
           This project is based on things that have been shown on Vsause. 
           Specifically, Inq's Cipher Wheel as seen 
@@ -51,8 +45,8 @@ export default class App extends Component {
           <br/>
           <p className="hidden">Yahaha! You found me!</p>
           Created by Cory Ginsberg, 2018.
-        </footer>
-      </div>
+        </footer>) : (null)}
+      </body>
     );
   }
 }

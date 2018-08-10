@@ -78,18 +78,16 @@ export default class CipherForm extends Component {
       <div>
         <form>
           <div className="txtArea-wrapper">
-            <label className="txtarea-label" htmlFor="Text">Enter your text here</label>
-            <br/>
-            <textarea id="Text" className="materialize-textarea" type="text" name="textbox" value={this.state.value} onChange={this.handleChange}></textarea>
+            <textarea id="Text" placeholder="Enter your text here" className="materialize-textarea" type="text" name="textbox" rows="4" value={this.state.value} onChange={this.handleChange}></textarea>
           </div>
           <br/>
           <div className="numSelect-wrapper">
-            <label htmlFor="Number">Enter offsets from 0 - 99</label>
+            <label className="numSelect-Label" htmlFor="Number">Enter offsets from 0 - 99</label>
             <br/>
-            <input type="number" min="0" max="99" maxLength="2" id="firstNumber" name="listFirstNumber" onChange={this.handleChange}/>
-            <input type="number" min="0" max="99" maxLength="2" id="secondNumber" name="listSecondNumber" onChange={this.handleChange}/>
-            <input type="number" min="0" max="99" maxLength="2" id="thirdNumber" name="listThirdNumber" onChange={this.handleChange}/>
-            <input type="number" min="0" max="99" maxLength="2" id="fourthNumber" name="listFourthNumber" onChange={this.handleChange}/>
+            <input type="number" min="0" max="99" maxLength="2" placeholder="1" id="firstNumber" name="listFirstNumber" onChange={this.handleChange}/>
+            <input type="number" min="0" max="99" maxLength="2" placeholder="27" id="secondNumber" name="listSecondNumber" onChange={this.handleChange}/>
+            <input type="number" min="0" max="99" maxLength="2" placeholder="53" id="thirdNumber" name="listThirdNumber" onChange={this.handleChange}/>
+            <input type="number" min="0" max="99" maxLength="2" placeholder="79" id="fourthNumber" name="listFourthNumber" onChange={this.handleChange}/>
           </div>
           <br/>
           <button className="small-btn mdc-button mdc-button--raised" onClick={this.onSubmit}>Encrypt</button>
