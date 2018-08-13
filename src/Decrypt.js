@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import Clipboard from 'react-clipboard.js';
 
 const ALPHABET = [...Array(26).keys()].map(i => String.fromCharCode(i + "A".charCodeAt(0)));
 
@@ -70,6 +71,8 @@ export default class DecryptForm extends Component {
     for (let i = start; i <= end; i++) {
       numbers.push(i);
     }
+    console.log("OMG RAINBOWS!".rainbow);
+
     return numbers;
   }
 
@@ -77,10 +80,6 @@ export default class DecryptForm extends Component {
     return (
       <div>
         <form>
-          <div className="txtArea-wrapper">
-            <textarea id="Text" placeholder="Enter your code here" className="materialize-textarea" type="text" name="textbox" rows="4" value={this.state.value} onChange={this.handleChange}></textarea>
-          </div>
-          <br/>
           <div className="numSelect-wrapper">
             <label className="numSelect-Label" htmlFor="Number">Enter offsets from 0 - 99</label>
             <br/>
@@ -89,12 +88,22 @@ export default class DecryptForm extends Component {
             <input type="number" min="0" max="99" maxLength="2" placeholder="53" id="thirdNumber" name="listThirdNumber" onChange={this.handleChange}/>
             <input type="number" min="0" max="99" maxLength="2" placeholder="79" id="fourthNumber" name="listFourthNumber" onChange={this.handleChange}/>
           </div>
+
+          <div className="txtArea-wrapper">
+            <textarea id="Text" placeholder="Enter your code here" className="materialize-textarea" type="text" name="textbox" rows="4" value={this.state.value} onChange={this.handleChange}></textarea>
+          </div>
+          <br/>
+
           <br/>
           <button className="small-btn mdc-button mdc-button--raised" onClick={this.onSubmit}>Decryptd</button>
         </form>
 
         {this.state.cipherComputed ? (
-          <h1 className="Large-letters ">{this.state.cipherValue}</h1>) : null}
+          <div>
+            <h1 className="Large-letters">{this.state.cipherValue}</h1>
+            <Clipboard className="small-btn mdc-button mdc-button--raised" data-clipboard-text={this.state.cipherValue}>Copy To Clipboard</Clipboard>
+          </div>
+          ) : null}
       </div>
     );
   } 

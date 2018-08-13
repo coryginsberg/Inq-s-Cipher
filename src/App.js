@@ -26,7 +26,7 @@ export default class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Inq's Cipher Wheel (Kinda)</h1>
+          <h1 className="App-title">Inq's Cipher Wheel</h1>
         </header>
         <main>
           <Router>
@@ -41,13 +41,10 @@ export default class App extends Component {
         </main>
       {!this.state.isToggleOn ? (  
         <footer className="App-footer">
-          This project is based on things that have been shown on Vsause. 
-          Specifically, Inq's Cipher Wheel as seen 
+          This project is based on Inq's Cipher Wheel as seen 
           in <a href="https://youtu.be/TvsiLV7RLx4">this Michael's Toy's episode</a>.
           <br/>
           DISCLAIMER: I DO NOT OWN INQ! INQ WAS CREATED BY THE GUYS AT VSAUSE FOR THE CURIOSITY BOX.
-          <br/>
-          Also there are a bunch of (subtle) Easter Eggs on this site. Try to find them all ;)
           <br/>
           <p className="hidden">Yahaha! You found me!</p>
           Created by Cory Ginsberg, 2018.

@@ -7,7 +7,7 @@
 }
 
 $top-nav-height: 125px;
-$footer-height: 145px;
+$footer-height: 120px;
 $orange: #F58220;
 $gray: #3A3A3C;
 
@@ -130,6 +130,10 @@ input {
 
 .numSelect-Label {
   font-size: 15pt;
+}
+
+.numSelect-wrapper {
+  margin-top: 20px;
 }
 
 .Large-letters {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import Clipboard from 'react-clipboard.js';
 
 const ALPHABET = [...Array(26).keys()].map(i => String.fromCharCode(i + "A".charCodeAt(0)));
 
@@ -77,7 +78,7 @@ export default class EncryptForm extends Component {
     return (
       <div>
         <form>
-          <div className="txtArea-wrapper">
+          <div className="txtArea-Wrapper">
             <textarea id="Text" placeholder="Enter your text here" className="materialize-textarea" type="text" name="textbox" rows="4" value={this.state.value} onChange={this.handleChange}></textarea>
           </div>
           <br/>
@@ -94,7 +95,11 @@ export default class EncryptForm extends Component {
         </form>
 
         {this.state.cipherComputed ? (
-          <h1 className="Large-letters ">{this.state.cipherValue}</h1>) : null}
+          <div>
+            <h1 className="Large-letters">{this.state.cipherValue}</h1>
+            <Clipboard className="small-btn mdc-button mdc-button--raised" data-clipboard-text={this.state.cipherValue}>Copy To Clipboard</Clipboard>
+          </div>
+          ) : null}
       </div>
     );
   } 
