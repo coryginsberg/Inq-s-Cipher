@@ -7,7 +7,7 @@
 }
 
 $top-nav-height: 125px;
-$footer-height: 140px;
+$footer-height: 145px;
 $orange: #F58220;
 $gray: #3A3A3C;
 
@@ -26,13 +26,10 @@ html {
   box-sizing: inherit;
 }
 
-body {
+.App {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-}
-
-.App {
   font-family: AlsinaUltrajada, 'Roboto', Arial, Helvetica, sans-serif;
   text-align: center;
 }
@@ -72,20 +69,19 @@ body {
 
 /////////////////////////////////////////////////////////////
 
-.App-content {
-  position: relative; 
-  margin: 0;
-  padding-bottom: 6rem;
-  min-height: 100%;
-  
+.grid-wrapper {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
 }
 
 .start-btn {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+
+  align-self: center;
+  margin-top: 50px;
+
   @include mdc-button-ink-color(white);
   @include mdc-button-container-fill-color($orange);
   @include mdc-button-corner-radius(5px);
@@ -94,21 +90,7 @@ body {
   font-family: AlsinaUltrajada;
   font-size: 20pt;
   height: 75px;
-
-  // Top Bar Animation after button is pressed.
-  :hover {
-    animation-duration: 1s;
-    animation-name: slideup;
-  }
-}
-
-@keyframes slideup {
-  from {
-    margin-top:50px;
-  }
-  to {
-    margin-top: 100%;
-  }
+  width: 40%;
 }
 
 .small-btn {
@@ -132,6 +114,7 @@ textarea {
   height: calc(100% - 75px);
   border-radius: 5px 5px 0 0;
   outline: none;
+  resize: none;
 }
 
 input {
@@ -140,6 +123,8 @@ input {
   padding: 5px 10px 5px 10px;
   margin: 10px;
   border-bottom: 2px solid $orange;
+  border-radius: 5px 5px 0 0;
+
   background-color: #E8E8E8;
 }
 
@@ -168,6 +153,8 @@ main {
   background-color: $orange;
   height: $footer-height;
   color: $gray;
+
+  padding-top: 15px;
 
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

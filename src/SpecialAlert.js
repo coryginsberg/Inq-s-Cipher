@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react';
 import Konami from 'react-konami-code'
  
 export default class SpecialAlert extends React.Component {

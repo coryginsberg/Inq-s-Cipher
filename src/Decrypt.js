@@ -3,7 +3,7 @@ import './App.scss';
 
 const ALPHABET = [...Array(26).keys()].map(i => String.fromCharCode(i + "A".charCodeAt(0)));
 
-export default class CipherForm extends Component {
+export default class DecryptForm extends Component {
 
   constructor(props) {
     super(props);
@@ -78,7 +78,7 @@ export default class CipherForm extends Component {
       <div>
         <form>
           <div className="txtArea-wrapper">
-            <textarea id="Text" placeholder="Enter your text here" className="materialize-textarea" type="text" name="textbox" rows="4" value={this.state.value} onChange={this.handleChange}></textarea>
+            <textarea id="Text" placeholder="Enter your code here" className="materialize-textarea" type="text" name="textbox" rows="4" value={this.state.value} onChange={this.handleChange}></textarea>
           </div>
           <br/>
           <div className="numSelect-wrapper">
@@ -90,7 +90,7 @@ export default class CipherForm extends Component {
             <input type="number" min="0" max="99" maxLength="2" placeholder="79" id="fourthNumber" name="listFourthNumber" onChange={this.handleChange}/>
           </div>
           <br/>
-          <button className="small-btn mdc-button mdc-button--raised" onClick={this.onSubmit}>Encrypt</button>
+          <button className="small-btn mdc-button mdc-button--raised" onClick={this.onSubmit}>Decryptd</button>
         </form>
 
         {this.state.cipherComputed ? (
